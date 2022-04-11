@@ -1,3 +1,5 @@
+# For more information see: https://github.com/dessant/lock-threads
+
 name: 'Lock Threads'
 
 on:
