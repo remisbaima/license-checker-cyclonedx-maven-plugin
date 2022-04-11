@@ -5,11 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <!-- TODO: check pom structure from guava and Spring Boot -->
-  <!-- TODO: change version to 0.0.1-SNAPSHOT -->
 
   <groupId>org.remis</groupId>
   <artifactId>license-checker-cyclonedx-maven-plugin</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>License Checker for CycloneDX Maven Plugin</name>
