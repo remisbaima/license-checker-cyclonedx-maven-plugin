@@ -66,11 +66,19 @@ To quickly develop and test a JSONPath expression you can use e.g.: https://json
 
 ## Disclaimer
 This is **not** a compliance tool. There are other tools for this purpose e.g. https://dependencytrack.org/
+
 This plugin is more of a development tool to help developers check as soon as possible if a dependency they want to use has a license allowed by their company policies.
+
+
+## License
+Permission to modify and redistribute is granted under the terms of the Apache 2.0 license. See the [LICENSE] file for the full license.
+
+[LICENSE]: https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/blob/main/LICENSE
 
 
 ## To contribute
 Just create a PR :-)
+
 Useful resources:
 - https://maven.apache.org/plugin-developers/index.html
 - https://www.baeldung.com/maven-plugin
@@ -78,9 +86,3 @@ Useful resources:
 - https://github.com/takari/takari-plugin-testing-project
 - https://github.com/cko/predefined_maven_properties/blob/master/README.md
 - https://github.com/json-path/JsonPath
-
-
-## License
-Permission to modify and redistribute is granted under the terms of the Apache 2.0 license. See the [LICENSE] file for the full license.
-
-[LICENSE]: https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/blob/main/LICENSE
