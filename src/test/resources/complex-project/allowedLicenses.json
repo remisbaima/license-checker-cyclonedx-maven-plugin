@@ -1,0 +1,18 @@
+[
+	{
+		"License_SPDX": "Apache-2.0",
+		"License_Conflicts": "No"
+	},
+	{
+		"License_SPDX": "BSD-4-Clause",
+		"License_Conflicts": "No"
+	},
+	{
+		"License_SPDX": "GPL-1.0-only",
+		"License_Conflicts": "Yes"
+	},
+	{
+		"License_SPDX": "GPL-2.0",
+		"License_Conflicts": "Yes"
+	}
+]
