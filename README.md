@@ -52,7 +52,7 @@ See [${project.basedir}/allowedLicenses.json](src/test/resources/complex-project
 | allowedLicenses         | Comma separated list of SPDX licenses allowed to be used |
 | allowedLicensesJson     | URL or file path of a JSON content containing the list of SPDX licenses allowed to be used |
 | allowedLicensesJsonPath | JSONPath expression to extract the licenses from the JSON file containing the list of SPDX licenses allowed to be used |
-| ignoredDependencies     | Comma separated list of dependencies to ignore in the format `<groupId>:<artifactId>:<version>`. This is useful when the CycloneDX Maven Plugin cannot identify the license of a dependency. If any entry from this list is found in the BOM, it will be ignored and logged with [WARNING] since dependencies without a clear license are generally old or not well maintained and should be updated or replaced. |
+| ignoredDependencies     | Comma separated list of dependencies to ignore in the format `<groupId>:<artifactId>:<version>`. This is useful when the CycloneDX Maven Plugin cannot identify the license of a dependency. If any entry from this list is found in the BOM, it will be ignored and logged with `[WARNING]` since dependencies without a clear license are generally old or not well maintained and should be updated or replaced. |
 
 ##### Note
 To quickly develop and test a JSONPath expression you can use e.g.: https://jsonpath.com/
