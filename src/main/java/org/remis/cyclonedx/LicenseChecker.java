@@ -1,5 +1,6 @@
 package org.remis.cyclonedx;
 
+import com.jayway.jsonpath.JsonPath;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -8,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.cyclonedx.exception.ParseException;
@@ -19,8 +19,6 @@ import org.cyclonedx.model.LicenseChoice;
 import org.cyclonedx.parsers.JsonParser;
 import org.cyclonedx.parsers.Parser;
 import org.cyclonedx.parsers.XmlParser;
-
-import com.jayway.jsonpath.JsonPath;
 
 /**
  * Class with the business logic to perform the license check.
@@ -89,7 +87,7 @@ public class LicenseChecker {
   protected List<String> parseJson(String jsonFileUri, String jsonPath, File destFile)
       throws IOException {
     File file;
-    if (isURL(jsonFileUri)) {
+    if (isUrl(jsonFileUri)) {
       file = destFile;
       FileUtils.copyURLToFile(new URL(jsonFileUri), file, TIMEOUT_MILLIS, TIMEOUT_MILLIS);
     } else {
@@ -109,7 +107,7 @@ public class LicenseChecker {
     return String.join(":", component.getGroup(), component.getName(), component.getVersion());
   }
 
-  private boolean isURL(String uri) {
+  private boolean isUrl(String uri) {
     try {
       new URL(uri).toURI();
       return true;

@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -20,7 +19,7 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.cyclonedx.exception.ParseException;
 import org.cyclonedx.model.Bom;
 
-/** Goal which checks CycloneDX BOM licenses used by dependencies */
+/** Goal which checks CycloneDX BOM licenses used by dependencies. */
 @Mojo(name = "check", defaultPhase = LifecyclePhase.PACKAGE)
 public class LicenseCheckerMojo extends AbstractMojo {
   @Parameter(property = "ignoredDependencies")
@@ -44,9 +43,9 @@ public class LicenseCheckerMojo extends AbstractMojo {
   private static final String CYCLONEDX_PLUGIN = "org.cyclonedx:cyclonedx-maven-plugin";
 
   protected static final String MSG_ERROR_MINIMUM_CONFIG =
-      "Invalid configuration: at least <allowedLicensesJson> or <allowedLicenses> must be set";
+      "At least <allowedLicensesJson> or <allowedLicenses> must be set";
   protected static final String MSG_ERROR_INVALID_JSON_CONFIG =
-      "Invalid configuration: if <allowedLicensesJson> is set, <allowedLicensesJsonPath> must also be set";
+      "If <allowedLicensesJson> is set, <allowedLicensesJsonPath> must also be set";
   protected static final String MSG_ALLOWED_LICENSES = "List of allowed licenses: ";
   protected static final String MSG_ERROR_NOT_ALLOWED = "Not allowed license <%s> used by <%s>";
   protected static final String MSG_SUCCESS = "Success: all used licenses are allowed";
@@ -66,7 +65,8 @@ public class LicenseCheckerMojo extends AbstractMojo {
     // initialisations
     LicenseChecker licenseChecker = new LicenseChecker();
     Bom bom;
-    Set<String> ignoredDependenciesSet, allowedLicensesSet;
+    Set<String> allowedLicensesSet;
+    Set<String> ignoredDependenciesSet;
     try {
       Xpp3Dom cycloneDxConfigDom = (Xpp3Dom) project.getPlugin(CYCLONEDX_PLUGIN).getConfiguration();
       Map<String, String> cycloneDxConfig = new HashMap<>();
