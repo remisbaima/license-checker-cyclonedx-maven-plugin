@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml)
+
 # license-checker-cyclonedx-maven-plugin
 Maven plugin to check if dependencies in CycloneDX BOM files use only allowed licenses.
 
