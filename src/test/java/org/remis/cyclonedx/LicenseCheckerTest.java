@@ -3,19 +3,21 @@ package org.remis.cyclonedx;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class LicenseCheckerTest {
   private static final URL JSON_FILE_URL =
@@ -23,73 +25,6 @@ public class LicenseCheckerTest {
   private static final String JSON_PATH = "$[?(@.License_Conflicts=='No')].License_SPDX";
 
   private final LicenseChecker licenseChecker = new LicenseChecker();
-
-  @Test
-  void ignoredDependenciesDifferentThanNonCompliantDependencies() {
-    // GIVEN
-    Set<String> ignoredDependencies = new HashSet<>(Arrays.asList("g1:a1:1.0"));
-    Map<String, String> expectedMap = Collections.singletonMap("g2:a2:1.0", "license2");
-    Map<String, String> nonCompliantDependencies = new HashMap<>(expectedMap);
-    // WHEN
-    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
-    // THEN
-    assertTrue(ignoredDependencies.isEmpty());
-    assertEquals(expectedMap, nonCompliantDependencies);
-  }
-
-  @Test
-  void nonCompliantDependenciesBiggerThanIgnoredDependencies() {
-    // GIVEN
-    Set<String> expectedSet = Collections.singleton("g1:a1:1.0");
-    Set<String> ignoredDependencies = new HashSet<>(expectedSet);
-    Map<String, String> expectedMap = Collections.singletonMap("g2:a2:1.0", "license2");
-    Map<String, String> nonCompliantDependencies = new HashMap<>(expectedMap);
-    nonCompliantDependencies.put("g1:a1:1.0", "license1");
-    // WHEN
-    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
-    // THEN
-    assertEquals(expectedSet, ignoredDependencies);
-    assertEquals(expectedMap, nonCompliantDependencies);
-  }
-
-  @Test
-  void ignoredDependenciesBiggerThanNonCompliantDependencies() {
-    // GIVEN
-    Set<String> expectedSet = Collections.singleton("g1:a1:1.0");
-    Set<String> ignoredDependencies = new HashSet<>(Arrays.asList("g1:a1:1.0", "g2:a2:1.0"));
-    Map<String, String> nonCompliantDependencies = new HashMap<>();
-    nonCompliantDependencies.put("g1:a1:1.0", "license1");
-    // WHEN
-    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
-    // THEN
-    assertEquals(expectedSet, ignoredDependencies);
-    assertTrue(nonCompliantDependencies.isEmpty());
-  }
-
-  @Test
-  void emptyNonCompliantDependencies() {
-    // GIVEN
-    Set<String> ignoredDependencies = new HashSet<>(Arrays.asList("g1:a1:1.0", "g2:a2:1.0"));
-    Map<String, String> nonCompliantDependencies = new HashMap<>();
-    // WHEN
-    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
-    // THEN
-    assertTrue(ignoredDependencies.isEmpty());
-    assertTrue(nonCompliantDependencies.isEmpty());
-  }
-
-  @Test
-  void emptyIgnoredDependencies() {
-    // GIVEN
-    Set<String> ignoredDependencies = new HashSet<>();
-    Map<String, String> expectedMap = Collections.singletonMap("g1:a1:1.0", "license1");
-    Map<String, String> nonCompliantDependencies = new HashMap<>(expectedMap);
-    // WHEN
-    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
-    // THEN
-    assertTrue(ignoredDependencies.isEmpty());
-    assertEquals(expectedMap, nonCompliantDependencies);
-  }
 
   @Test
   void parseJsonFromLocalFile() throws IOException {
@@ -110,7 +45,6 @@ public class LicenseCheckerTest {
     List<String> expected = Arrays.asList("Apache-2.0", "BSD-4-Clause");
     // WHEN
     List<String> actual = licenseChecker.parseJson(jsonFileUri, JSON_PATH, destFile);
-    // THEN
     assertEquals(expected, actual);
   }
 
@@ -132,5 +66,43 @@ public class LicenseCheckerTest {
     Set<String> actual = licenseChecker.lowercaseList(input);
     // THEN
     assertEquals(expected, actual);
+  }
+
+  @ParameterizedTest
+  @MethodSource("testCheckIgnoredDependencies")
+  void testCheckIgnoredDependencies(
+      Set<String> ignoredDependencies,
+      Set<String> nonCompliantDependencies,
+      Set<String> ignoredDependenciesExpected,
+      Set<String> nonCompliantDependenciesExpected) {
+    // WHEN
+    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
+    // THEN
+    assertEquals(
+        ignoredDependenciesExpected, ignoredDependencies, "ignoredDependencies check failed");
+    assertEquals(
+        nonCompliantDependenciesExpected,
+        nonCompliantDependencies,
+        "nonCompliantDependencies check failed");
+  }
+
+  static Stream<Arguments> testCheckIgnoredDependencies() {
+    return Stream.of(
+        // empty ignoredDependencies
+        arguments(asSet(), asSet("a:a:1"), asSet(), asSet("a:a:1")),
+        // empty nonCompliantDependencies
+        arguments(asSet("a:a:1"), asSet(), asSet(), asSet()),
+        // empty ignoredDependencies and nonCompliantDependencies
+        arguments(asSet(), asSet(), asSet(), asSet()),
+        // ignoredDependencies > nonCompliantDependencies
+        arguments(asSet("a:a:1", "b:b:2"), asSet("a:a:1"), asSet("a:a:1"), asSet()),
+        // ignoredDependencies < nonCompliantDependencies
+        arguments(asSet("a:a:1"), asSet("a:a:1", "b:b:2"), asSet("a:a:1"), asSet("b:b:2")),
+        // ignoredDependencies != nonCompliantDependencies
+        arguments(asSet("a:a:1"), asSet("b:b:2"), asSet(), asSet("b:b:2")));
+  }
+
+  private static Set<String> asSet(String... str) {
+    return new HashSet<>(Arrays.asList(str));
   }
 }
