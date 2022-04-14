@@ -91,7 +91,8 @@ public class LicenseCheckerMojo extends AbstractMojo {
     Map<String, String> nonCompliantDependencies = licenseChecker.checkBom(bom, allowedLicensesSet);
 
     // check dependencies to ignore
-    licenseChecker.checkIgnoredDependencies(ignoredDependenciesSet, nonCompliantDependencies);
+    licenseChecker.checkIgnoredDependencies(
+        ignoredDependenciesSet, nonCompliantDependencies.keySet());
 
     // print results
     getLog().info(MSG_ALLOWED_LICENSES + allowedLicensesSet);

@@ -68,11 +68,11 @@ public class LicenseChecker {
    *     difference of this map.keySet() and the ignoredDependencies set
    */
   protected void checkIgnoredDependencies(
-      Set<String> ignoredDependencies, Map<String, String> nonCompliantDependencies) {
+      Set<String> ignoredDependencies, Set<String> nonCompliantDependenciesKeys) {
     // keep only ignoredDependencies that exist in BOM
-    ignoredDependencies.retainAll(nonCompliantDependencies.keySet());
+    ignoredDependencies.retainAll(nonCompliantDependenciesKeys);
     // remove from nonCompliantDependencies all ignoredDependencies
-    nonCompliantDependencies.keySet().removeAll(ignoredDependencies);
+    nonCompliantDependenciesKeys.removeAll(ignoredDependencies);
   }
 
   protected Bom parseBom(Map<String, String> cycloneDxConfig, String bomDir) throws ParseException {
