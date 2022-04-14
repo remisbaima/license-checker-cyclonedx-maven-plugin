@@ -66,6 +66,7 @@
     <slf4j-nop.version>1.7.36</slf4j-nop.version>
     <checkstyle.version>9.3</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 
     <!-- generic properties -->
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -182,7 +183,19 @@
         </configuration>
         <executions>
           <execution>
-            <id>validate</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.6.0.0</version>
+        <executions>
+          <execution>
             <phase>validate</phase>
             <goals>
               <goal>check</goal>
@@ -195,19 +208,30 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
         <version>${maven-plugin.version}</version>
-        <configuration>
-          <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-          <goalPrefix>license-checker-cyclonedx</goalPrefix>
-        </configuration>
-        <executions>
-          <execution>
-            <id>help-goal</id>
-            <goals>
-              <goal>helpmojo</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>${maven-source-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
