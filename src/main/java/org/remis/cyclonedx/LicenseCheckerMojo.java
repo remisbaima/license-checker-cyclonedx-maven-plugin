@@ -88,19 +88,18 @@ public class LicenseCheckerMojo extends AbstractMojo {
     }
 
     // check licences
-    Map<String, String> nonCompliantDependenciesMap =
-        licenseChecker.checkLicenses(bom, allowedLicensesSet);
+    Map<String, String> nonCompliantDependencies = licenseChecker.checkBom(bom, allowedLicensesSet);
 
     // check dependencies to ignore
-    licenseChecker.checkIgnoredDependencies(ignoredDependenciesSet, nonCompliantDependenciesMap);
+    licenseChecker.checkIgnoredDependencies(ignoredDependenciesSet, nonCompliantDependencies);
 
     // print results
     getLog().info(MSG_ALLOWED_LICENSES + allowedLicensesSet);
     ignoredDependenciesSet.stream().forEach(e -> getLog().warn(MSG_SKIPING_DEPENDENCY + e));
-    if (nonCompliantDependenciesMap.isEmpty()) {
+    if (nonCompliantDependencies.isEmpty()) {
       getLog().info(MSG_SUCCESS);
     } else {
-      for (Entry<String, String> e : nonCompliantDependenciesMap.entrySet()) {
+      for (Entry<String, String> e : nonCompliantDependencies.entrySet()) {
         getLog().error(String.format(MSG_ERROR_NOT_ALLOWED, e.getValue(), e.getKey()));
       }
       throw new MojoExecutionException("");
