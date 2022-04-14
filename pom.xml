@@ -4,8 +4,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- TODO: check pom structure from guava and Spring Boot -->
-
   <groupId>org.remis</groupId>
   <artifactId>license-checker-cyclonedx-maven-plugin</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -138,9 +136,14 @@
     </dependency>
   </dependencies>
 
-  <!-- TODO: check dependencies -->
   <build>
     <plugins>
+      <!-- build plugins -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>${maven-plugin.version}</version>
+      </plugin>
       <!-- test plugins -->
       <plugin>
         <groupId>io.takari.maven.plugins</groupId>
@@ -202,12 +205,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <!-- build plugins -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-plugin-plugin</artifactId>
-        <version>${maven-plugin.version}</version>
       </plugin>
     </plugins>
   </build>
