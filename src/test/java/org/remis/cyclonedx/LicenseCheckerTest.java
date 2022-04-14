@@ -8,8 +8,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -21,9 +24,72 @@ public class LicenseCheckerTest {
 
   private final LicenseChecker licenseChecker = new LicenseChecker();
 
-  // TODO: test parseBom
-  // TODO: test checkIgnoredDependencies
-  // TODO: test checkLicenses
+  @Test
+  void ignoredDependenciesDifferentThanNonCompliantDependencies() {
+    // GIVEN
+    Set<String> ignoredDependencies = new HashSet<>(Arrays.asList("g1:a1:1.0"));
+    Map<String, String> expectedMap = Collections.singletonMap("g2:a2:1.0", "license2");
+    Map<String, String> nonCompliantDependencies = new HashMap<>(expectedMap);
+    // WHEN
+    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
+    // THEN
+    assertTrue(ignoredDependencies.isEmpty());
+    assertEquals(expectedMap, nonCompliantDependencies);
+  }
+
+  @Test
+  void nonCompliantDependenciesBiggerThanIgnoredDependencies() {
+    // GIVEN
+    Set<String> expectedSet = Collections.singleton("g1:a1:1.0");
+    Set<String> ignoredDependencies = new HashSet<>(expectedSet);
+    Map<String, String> expectedMap = Collections.singletonMap("g2:a2:1.0", "license2");
+    Map<String, String> nonCompliantDependencies = new HashMap<>(expectedMap);
+    nonCompliantDependencies.put("g1:a1:1.0", "license1");
+    // WHEN
+    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
+    // THEN
+    assertEquals(expectedSet, ignoredDependencies);
+    assertEquals(expectedMap, nonCompliantDependencies);
+  }
+
+  @Test
+  void ignoredDependenciesBiggerThanNonCompliantDependencies() {
+    // GIVEN
+    Set<String> expectedSet = Collections.singleton("g1:a1:1.0");
+    Set<String> ignoredDependencies = new HashSet<>(Arrays.asList("g1:a1:1.0", "g2:a2:1.0"));
+    Map<String, String> nonCompliantDependencies = new HashMap<>();
+    nonCompliantDependencies.put("g1:a1:1.0", "license1");
+    // WHEN
+    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
+    // THEN
+    assertEquals(expectedSet, ignoredDependencies);
+    assertTrue(nonCompliantDependencies.isEmpty());
+  }
+
+  @Test
+  void emptyNonCompliantDependencies() {
+    // GIVEN
+    Set<String> ignoredDependencies = new HashSet<>(Arrays.asList("g1:a1:1.0", "g2:a2:1.0"));
+    Map<String, String> nonCompliantDependencies = new HashMap<>();
+    // WHEN
+    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
+    // THEN
+    assertTrue(ignoredDependencies.isEmpty());
+    assertTrue(nonCompliantDependencies.isEmpty());
+  }
+
+  @Test
+  void emptyIgnoredDependencies() {
+    // GIVEN
+    Set<String> ignoredDependencies = new HashSet<>();
+    Map<String, String> expectedMap = Collections.singletonMap("g1:a1:1.0", "license1");
+    Map<String, String> nonCompliantDependencies = new HashMap<>(expectedMap);
+    // WHEN
+    licenseChecker.checkIgnoredDependencies(ignoredDependencies, nonCompliantDependencies);
+    // THEN
+    assertTrue(ignoredDependencies.isEmpty());
+    assertEquals(expectedMap, nonCompliantDependencies);
+  }
 
   @Test
   void parseJsonFromLocalFile() throws IOException {
