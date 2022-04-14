@@ -1,4 +1,8 @@
+[![Java CI with Maven](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml)
+[![Build Status](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions?workflows=Java+CI+with+Maven)
+
 [![Build Status](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml)
+
 
 # license-checker-cyclonedx-maven-plugin
 Maven plugin to check if dependencies in CycloneDX BOM files use only allowed licenses.
