@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class LicenseCheckerTest {
   private static final URL JSON_FILE_URL =
@@ -27,41 +28,10 @@ public class LicenseCheckerTest {
   private final LicenseChecker licenseChecker = new LicenseChecker();
 
   @Test
-  void parseJsonFromLocalFile() throws IOException {
-    // GIVEN
-    String jsonFileUri = JSON_FILE_URL.getFile();
-    List<String> expected = Arrays.asList("Apache-2.0", "BSD-4-Clause");
-    // WHEN
-    List<String> actual = licenseChecker.parseJson(jsonFileUri, JSON_PATH, null);
-    // THEN
-    assertEquals(expected, actual);
-  }
-
-  @Test
-  void parseJsonFromURL() throws IOException {
-    // GIVEN
-    String jsonFileUri = JSON_FILE_URL.toString();
-    File destFile = new File("target/licensechecker.json");
-    List<String> expected = Arrays.asList("Apache-2.0", "BSD-4-Clause");
-    // WHEN
-    List<String> actual = licenseChecker.parseJson(jsonFileUri, JSON_PATH, destFile);
-    assertEquals(expected, actual);
-  }
-
-  @Test
-  void parseJsonThrowsIOException() {
-    // GIVEN
-    String path = "invalid-path";
-    // WHEN + THEN
-    Exception e = assertThrows(IOException.class, () -> licenseChecker.parseJson(path, null, null));
-    assertTrue(e.getMessage().startsWith(path));
-  }
-
-  @Test
   void lowercaseAndRemoveWhitespacesFromList() {
     // GIVEN
     List<String> input = Arrays.asList("", " ", "MIT", " MIT ", " Apache-2.0 ");
-    Set<String> expected = new HashSet<>(Arrays.asList("apache-2.0", "mit"));
+    Set<String> expected = asSet("apache-2.0", "mit");
     // WHEN
     Set<String> actual = licenseChecker.lowercaseList(input);
     // THEN
@@ -69,8 +39,36 @@ public class LicenseCheckerTest {
   }
 
   @ParameterizedTest
-  @MethodSource("testCheckIgnoredDependencies")
-  void testCheckIgnoredDependencies(
+  @ValueSource(strings = {"", " ", "invalid-path"})
+  void parseJsonThrowsIOException(String path) {
+    // WHEN + THEN
+    Exception e = assertThrows(IOException.class, () -> licenseChecker.parseJson(path, null, null));
+    assertTrue(e.getMessage().startsWith(path));
+  }
+
+  @ParameterizedTest
+  @MethodSource
+  void parseJson(String jsonFileUri, String jsonPath, File destFile, List<String> expected)
+      throws IOException {
+    // WHEN
+    List<String> actual = licenseChecker.parseJson(jsonFileUri, JSON_PATH, destFile);
+    // THEN
+    assertEquals(expected, actual);
+  }
+
+  static Stream<Arguments> parseJson() {
+    List<String> expected = Arrays.asList("Apache-2.0", "BSD-4-Clause");
+    File destFile = new File("target/licensechecker.json");
+    return Stream.of(
+        // json from local file
+        arguments(JSON_FILE_URL.getFile(), JSON_PATH, null, expected),
+        // json from URL
+        arguments(JSON_FILE_URL.toString(), JSON_PATH, destFile, expected));
+  }
+
+  @ParameterizedTest
+  @MethodSource
+  void checkIgnoredDependencies(
       Set<String> ignoredDependencies,
       Set<String> nonCompliantDependencies,
       Set<String> ignoredDependenciesExpected,
@@ -86,7 +84,7 @@ public class LicenseCheckerTest {
         "nonCompliantDependencies check failed");
   }
 
-  static Stream<Arguments> testCheckIgnoredDependencies() {
+  static Stream<Arguments> checkIgnoredDependencies() {
     return Stream.of(
         // empty ignoredDependencies
         arguments(asSet(), asSet("a:a:1"), asSet(), asSet("a:a:1")),
