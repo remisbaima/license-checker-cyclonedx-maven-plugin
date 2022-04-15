@@ -2,7 +2,6 @@ package org.remis.cyclonedx;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.io.File;
@@ -17,13 +16,14 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class LicenseCheckerTest {
   private static final URL JSON_FILE_URL =
       LicenseCheckerTest.class.getResource("/complex-project/allowedLicenses.json");
   private static final String JSON_PATH = "$[?(@.License_Conflicts=='No')].License_SPDX";
+  private static final File TEMP_FILE = new File("target/licensechecker.json");
 
   private final LicenseChecker licenseChecker = new LicenseChecker();
 
@@ -39,11 +39,11 @@ public class LicenseCheckerTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"", " ", "invalid-path"})
-  void parseJsonThrowsIOException(String path) {
+  //  @ValueSource(strings = {" ", "invalid-path", "http://abc.com"})
+  @CsvSource({"'',''", "' ',' '", "invalid-path,''", "http://abc.com,''", "' '," + JSON_PATH})
+  void parseJsonThrowsIOException(String jsonFileUri, String jsonPath) {
     // WHEN + THEN
-    Exception e = assertThrows(IOException.class, () -> licenseChecker.parseJson(path, null, null));
-    assertTrue(e.getMessage().startsWith(path));
+    assertThrows(IOException.class, () -> licenseChecker.parseJson(jsonFileUri, jsonPath, null));
   }
 
   @ParameterizedTest
@@ -58,12 +58,11 @@ public class LicenseCheckerTest {
 
   static Stream<Arguments> parseJson() {
     List<String> expected = Arrays.asList("Apache-2.0", "BSD-4-Clause");
-    File destFile = new File("target/licensechecker.json");
     return Stream.of(
         // json from local file
-        arguments(JSON_FILE_URL.getFile(), JSON_PATH, null, expected),
+        arguments(JSON_FILE_URL.getFile(), JSON_PATH, TEMP_FILE, expected),
         // json from URL
-        arguments(JSON_FILE_URL.toString(), JSON_PATH, destFile, expected));
+        arguments(JSON_FILE_URL.toString(), JSON_PATH, TEMP_FILE, expected));
   }
 
   @ParameterizedTest

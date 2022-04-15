@@ -94,14 +94,18 @@ public class LicenseChecker {
 
   protected List<String> parseJson(String jsonFileUri, String jsonPath, File destFile)
       throws IOException {
-    File file;
-    if (isUrl(jsonFileUri)) {
-      file = destFile;
-      FileUtils.copyURLToFile(new URL(jsonFileUri), file, TIMEOUT_MILLIS, TIMEOUT_MILLIS);
-    } else {
-      file = new File(jsonFileUri);
+    try {
+      File file;
+      if (isUrl(jsonFileUri)) {
+        file = destFile;
+        FileUtils.copyURLToFile(new URL(jsonFileUri), file, TIMEOUT_MILLIS, TIMEOUT_MILLIS);
+      } else {
+        file = new File(jsonFileUri);
+      }
+      return JsonPath.read(file, jsonPath);
+    } catch (Exception e) {
+      throw new IOException(e);
     }
-    return JsonPath.read(file, jsonPath);
   }
 
   protected Set<String> lowercaseList(List<String> list) {
