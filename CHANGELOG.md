@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.0.3](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.2...v0.0.3) (2022-04-21)
+
+
+### Bug Fixes
+
+* re-org github action ([9fc1aed](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/9fc1aed6eed91e1fbda711b6722a2c3de5478b69))
+* remove commented code ([2553cf0](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/2553cf0ed4c0385611d211ae8aa638525ee78744))
+
 ### [0.0.2](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.1...v0.0.2) (2022-04-20)
 
 
