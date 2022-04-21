@@ -4,7 +4,7 @@
 
   <groupId>org.remis</groupId>
   <artifactId>license-checker-cyclonedx-maven-plugin</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.4</version>
   <packaging>maven-plugin</packaging>
 
   <name>License Checker for CycloneDX Maven Plugin</name>
