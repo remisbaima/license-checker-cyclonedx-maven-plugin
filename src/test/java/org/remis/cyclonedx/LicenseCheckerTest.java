@@ -39,7 +39,6 @@ public class LicenseCheckerTest {
   }
 
   @ParameterizedTest
-  //  @ValueSource(strings = {" ", "invalid-path", "http://abc.com"})
   @CsvSource({"'',''", "' ',' '", "invalid-path,''", "http://abc.com,''", "' '," + JSON_PATH})
   void parseJsonThrowsIOException(String jsonFileUri, String jsonPath) {
     // WHEN + THEN
