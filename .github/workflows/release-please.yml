@@ -15,4 +15,4 @@ jobs:
           release-type: maven
           package-name: license-checker-cyclonedx-maven-plugin
       - name: Get the step output
-        run: echo "Step output ${{ steps.release.outputs.release_created }}, ${{ steps.release.outputs }}, ${{ github.ref }}"
+        run: echo "Step output ${{ steps.release.outputs.release_created }}, ${{ steps.release.outputs }}"
