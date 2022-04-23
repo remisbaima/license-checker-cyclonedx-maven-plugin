@@ -11,11 +11,9 @@ jobs:
 
     steps:
       - uses: google-github-actions/release-please-action@v3.2.1
-        env:
-          GITHUB_USER: ${{ secrets.GITHUB_USER }}
-          GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_PLEASE }}
         with:
           release-type: maven
           package-name: license-checker-cyclonedx-maven-plugin
+          token: ${{ secrets.PAT_RELEASE_PLEASE }}
       - name: Get the step output
         run: echo "Step output ${{ steps.release.outputs.release_created }}, ${{ steps.release.outputs }}, ${{ steps.release.outputs['packages/package-a--release_created'] }}, ${{ steps.release.outputs['packages/package-a--tag_name'] }}, ${{ github.ref }}"
