@@ -11,6 +11,9 @@ jobs:
 
     steps:
       - uses: google-github-actions/release-please-action@v3.2.1
+        env:
+          GITHUB_USER: ${{ secrets.GITHUB_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
         with:
           release-type: maven
           package-name: license-checker-cyclonedx-maven-plugin
