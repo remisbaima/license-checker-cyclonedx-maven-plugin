@@ -60,7 +60,7 @@ public class LicenseChecker {
    *
    * @param ignoredDependencies modifies this set so that its value is the intersection of this set
    *     and the map.keySet()
-   * @param nonCompliantDependencies modifies this map so that its value is the asymmetric set
+   * @param nonCompliantDependenciesKeys modifies this map so that its value is the asymmetric set
    *     difference of this map.keySet() and the ignoredDependencies set
    */
   protected void checkIgnoredDependencies(
