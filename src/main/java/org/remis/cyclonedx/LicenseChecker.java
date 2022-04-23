@@ -106,7 +106,7 @@ public class LicenseChecker {
 
   protected Set<String> lowercaseList(List<String> list) {
     return list.parallelStream()
-        .filter(e -> StringUtils.isNotBlank(e))
+        .filter(StringUtils::isNotBlank)
         .map(e -> e.trim().toLowerCase())
         .collect(Collectors.toSet());
   }
