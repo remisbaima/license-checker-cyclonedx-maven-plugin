@@ -7,7 +7,6 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
 
 ## Maven usage (the sequence of plugin declaration is important)
 ```xml
-<plugins>
   <plugin>
     <groupId>org.cyclonedx</groupId>
     <artifactId>cyclonedx-maven-plugin</artifactId>
@@ -44,7 +43,6 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
       <ignoredDependencies>org.codehaus.woodstox:stax2-api:4.2.1</ignoredDependencies>
     </configuration>
   </plugin>
-</plugins>
 ```
 See [${project.basedir}/allowedLicenses.json](src/test/resources/complex-project/allowedLicenses.json)
 
