@@ -1,5 +1,6 @@
 [![Build Status](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions?workflows=Java+CI+with+Maven)
 [![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)][LICENSE]
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=remisbaima_license-checker-cyclonedx-maven-plugin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=remisbaima_license-checker-cyclonedx-maven-plugin)
 
 # license-checker-cyclonedx-maven-plugin
 Maven plugin to check if dependencies in CycloneDX BOM files use only allowed licenses.
