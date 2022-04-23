@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.0.9](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.8...v0.0.9) (2022-04-23)
+
+
+### Bug Fixes
+
+* test release ([2b787cb](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/2b787cb91f62db694a9378d57dffa1b3e119b00f))
+
 ### [0.0.8](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.7...v0.0.8) (2022-04-23)
 
 
