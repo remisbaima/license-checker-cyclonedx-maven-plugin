@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.0.11](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.10...v0.0.11) (2022-04-23)
+
+
+### Bug Fixes
+
+* change secret name ([ba215bc](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/ba215bc1c728dd2de1691b969ca1021970631d98))
+
 ### [0.0.10](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.9...v0.0.10) (2022-04-23)
 
 
