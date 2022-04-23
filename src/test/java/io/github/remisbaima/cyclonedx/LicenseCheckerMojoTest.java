@@ -1,4 +1,4 @@
-package org.remis.cyclonedx;
+package io.github.remisbaima.cyclonedx;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.github.remisbaima.cyclonedx.LicenseCheckerMojo;
 import io.takari.maven.testing.TestResources;
 import io.takari.maven.testing.executor.MavenRuntime;
 import io.takari.maven.testing.executor.MavenRuntime.MavenRuntimeBuilder;

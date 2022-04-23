@@ -49,7 +49,7 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.remis</groupId>
+        <groupId>io.github.remisbaima</groupId>
         <artifactId>license-checker-cyclonedx-maven-plugin</artifactId>
         <version>${test.input.version}</version>
         <executions>

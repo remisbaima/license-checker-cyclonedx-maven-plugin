@@ -1,4 +1,4 @@
-package org.remis.cyclonedx;
+package io.github.remisbaima.cyclonedx;
 
 import com.jayway.jsonpath.JsonPath;
 import java.io.File;

@@ -1,4 +1,4 @@
-package org.remis.cyclonedx;
+package io.github.remisbaima.cyclonedx;
 
 import java.io.File;
 import java.io.IOException;
