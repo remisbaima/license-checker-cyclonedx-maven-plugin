@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.0.10](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.9...v0.0.10) (2022-04-23)
+
+
+### Bug Fixes
+
+* listen to release created ([8a156dd](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/8a156dd333c21071d75192daf5779dd5685d36b1))
+* pass PAT instead of GH token ([8fe2b69](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/8fe2b69fd531f4aaecbce461f699225e3fb5027c))
+
 ### [0.0.9](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.8...v0.0.9) (2022-04-23)
 
 
