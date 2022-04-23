@@ -39,16 +39,12 @@ public class LicenseChecker {
     for (Component component : bom.getComponents()) {
       String dependencyId = getDependencyId(component);
       LicenseChoice licenseChoice = component.getLicenseChoice();
-      if (licenseChoice == null) {
-        nonCompliantDependencies.put(dependencyId, null);
-        continue;
-      }
-      List<License> licenses = licenseChoice.getLicenses();
-      if (licenses == null) {
+      if (licenseChoice == null || licenseChoice.getLicenses() == null) {
         nonCompliantDependencies.put(dependencyId, null);
         continue;
       }
 
+      List<License> licenses = licenseChoice.getLicenses();
       for (License license : licenses) {
         String licenseId = license.getId();
         if (!allowedLicenses.contains(StringUtils.lowerCase(licenseId))) {

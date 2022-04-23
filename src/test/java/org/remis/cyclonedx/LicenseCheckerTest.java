@@ -19,7 +19,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class LicenseCheckerTest {
+class LicenseCheckerTest {
   private static final URL JSON_FILE_URL =
       LicenseCheckerTest.class.getResource("/complex-project/allowedLicenses.json");
   private static final String JSON_PATH = "$[?(@.License_Conflicts=='No')].License_SPDX";
