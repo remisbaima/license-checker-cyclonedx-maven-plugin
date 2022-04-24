@@ -15,3 +15,5 @@ jobs:
           release-type: maven
           package-name: license-checker-cyclonedx-maven-plugin
           token: ${{ secrets.PAT_RELEASE_PLEASE }}
+          extra-files: |
+            README.md
