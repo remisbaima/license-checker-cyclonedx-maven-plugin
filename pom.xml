@@ -4,7 +4,7 @@
 
   <groupId>io.github.remisbaima</groupId>
   <artifactId>license-checker-cyclonedx-maven-plugin</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>License Checker for CycloneDX Maven Plugin</name>
