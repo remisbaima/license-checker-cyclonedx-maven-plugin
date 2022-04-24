@@ -1,5 +1,18 @@
 # Changelog
 
+### [0.0.4](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.3...v0.0.4) (2022-04-24)
+
+
+### Miscellaneous Chores
+
+* release 0.0.4 ([d01198a](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/d01198a8d481a07de9f1de22bb2f0ef5ab1fa361))
+
+
+### Documentation
+
+* add comments in readme to update version ([64b1490](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/64b14904dc721d1b72aa6801b65aa11dd1cc4f33))
+* add x-release-please-version to auto update version in readme ([baa3edb](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/baa3edb5df456f4a09e87ac7a47a661e97eb4f0b))
+
 ### [0.0.3](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.2...v0.0.3) (2022-04-24)
 
 
