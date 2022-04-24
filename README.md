@@ -88,3 +88,4 @@ Useful resources:
 - https://github.com/takari/takari-plugin-testing-project
 - https://github.com/cko/predefined_maven_properties/blob/master/README.md
 - https://github.com/json-path/JsonPath
+- https://lift.sonatype.com/results/github.com/remisbaima/license-checker-cyclonedx-maven-plugin
