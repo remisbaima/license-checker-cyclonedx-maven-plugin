@@ -27,13 +27,7 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
   <plugin>
     <groupId>io.github.remisbaima</groupId>
     <artifactId>license-checker-cyclonedx-maven-plugin</artifactId>
-
-[//]: # (x-release-please-version)
-
-    <version>0.0.3</version>
-
-[//]: # (x-release-please-end)
-
+    <version>0.0.3</version> <!-- x-release-please-version -->
     <executions>
       <execution>
         <phase>package</phase>
