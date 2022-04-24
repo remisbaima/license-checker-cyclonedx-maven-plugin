@@ -3,13 +3,6 @@
 ### [0.0.3](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.2...v0.0.3) (2022-04-24)
 
 
-### Miscellaneous Chores
-
-* release 0.0.3 ([c658a87](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/c658a87812dcb7b076d0b006263c9c25fc56b54a))
-
-### [0.0.3](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.2...v0.0.3) (2022-04-24)
-
-
 ### Bug Fixes
 
 * bump jackson-databind to fix sonatype lift critical finding ([7c0db44](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/7c0db44e8e140fa69fd6df3e6237f147cd188101))
