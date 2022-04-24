@@ -7,6 +7,9 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
 
 
 ## Maven usage (the sequence of plugin declaration is important)
+
+[//]: # (x-release-please-start-version)
+
 ```xml
   <plugin>
     <groupId>org.cyclonedx</groupId>
@@ -27,7 +30,7 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
   <plugin>
     <groupId>io.github.remisbaima</groupId>
     <artifactId>license-checker-cyclonedx-maven-plugin</artifactId>
-    <version>0.0.3</version> <!-- x-release-please-version -->
+    <version>0.0.3</version>
     <executions>
       <execution>
         <phase>package</phase>
@@ -45,6 +48,9 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
     </configuration>
   </plugin>
 ```
+
+[//]: # (x-release-please-end)
+
 See [${project.basedir}/allowedLicenses.json](src/test/resources/complex-project/allowedLicenses.json)
 
 
