@@ -23,7 +23,7 @@ import io.github.remisbaima.cyclonedx.LicenseChecker;
 
 class LicenseCheckerTest {
   private static final URL JSON_FILE_URL =
-      LicenseCheckerTest.class.getResource("/complex-project/allowedLicenses.json");
+      LicenseCheckerTest.class.getResource("/complex-project/licenses.json");
   private static final String JSON_PATH = "$[?(@.License_Conflicts=='No')].License_SPDX";
   private static final File TEMP_FILE = new File("target/licensechecker.json");
 
