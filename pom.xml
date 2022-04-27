@@ -9,7 +9,7 @@
 
   <name>License Checker for CycloneDX Maven Plugin</name>
   <description>Maven plugin to check if dependencies in CycloneDX BOM files use only allowed licenses.</description>
-  <url>https://github.com/remisbaima/${project.artifactId}</url>
+  <url>https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin</url>
   <inceptionYear>2022</inceptionYear>
 
   <licenses>
@@ -30,20 +30,20 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git@github.com:remisbaima/${project.artifactId}.git</connection>
-    <url>https://github.com/remisbaima/${project.artifactId}.git</url>
-    <developerConnection>scm:git:git@github.com:remisbaima/${project.artifactId}.git</developerConnection>
+    <connection>scm:git:git@github.com:remisbaima/license-checker-cyclonedx-maven-plugin.git</connection>
+    <url>https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin.git</url>
+    <developerConnection>scm:git:git@github.com:remisbaima/license-checker-cyclonedx-maven-plugin.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/remisbaima/${project.artifactId}/issues</url>
+    <url>https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/issues</url>
   </issueManagement>
 
   <ciManagement>
     <system>GitHub</system>
-    <url>https://github.com/remisbaima/${project.artifactId}/actions</url>
+    <url>https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions</url>
   </ciManagement>
 
   <prerequisites>
@@ -266,7 +266,7 @@
         <repository>
           <id>github</id>
           <name>GitHub Packages</name>
-          <url>https://maven.pkg.github.com/remisbaima/${project.artifactId}</url>
+          <url>https://maven.pkg.github.com/remisbaima/license-checker-cyclonedx-maven-plugin</url>
         </repository>
         -->
         <snapshotRepository>
