@@ -1,6 +1,10 @@
-[![Build Status](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions?workflows=Java+CI+with+Maven)
-[![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)][LICENSE]
+[![Java CI with Maven](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml)
+[![CodeQL](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/codeql-analysis.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=remisbaima_license-checker-cyclonedx-maven-plugin&metric=alert_status)](https://sonarcloud.io/summary/overall?id=remisbaima_license-checker-cyclonedx-maven-plugin)
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.remisbaima/license-checker-cyclonedx-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.remisbaima/license-checker-cyclonedx-maven-plugin)
+[![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)][LICENSE]
+
 
 # license-checker-cyclonedx-maven-plugin
 Maven plugin to check if dependencies in CycloneDX BOM files use only allowed licenses.
@@ -40,13 +44,13 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
     <configuration>
       <!-- values below MUST be customised for each company/team/project -->
       <allowedLicenses>MIT</allowedLicenses>
-      <allowedLicensesJson>${project.basedir}/allowedLicenses.json</allowedLicensesJson>
+      <allowedLicensesJson>${project.basedir}/licenses.json</allowedLicensesJson>
       <allowedLicensesJsonPath>$[?(@.License_Conflicts=='No')].License_SPDX</allowedLicensesJsonPath>
       <ignoredDependencies>org.codehaus.woodstox:stax2-api:4.2.1</ignoredDependencies>
     </configuration>
   </plugin>
 ```
-See [${project.basedir}/allowedLicenses.json](src/test/resources/complex-project/allowedLicenses.json)
+See [${project.basedir}/licenses.json](src/test/resources/complex-project/licenses.json)
 
 
 ### 2. Configure plugin options
