@@ -67,7 +67,7 @@ To quickly develop and test a JSONPath expression you can use e.g.: https://json
 
 ### 3. Run Maven
 ```
-mvn package
+mvn package -DskipTests
 ```
 
 
