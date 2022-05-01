@@ -18,6 +18,7 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.cyclonedx.exception.ParseException;
 import org.cyclonedx.model.Bom;
+import org.cyclonedx.model.License;
 
 /** Goal which checks CycloneDX BOM licenses used by dependencies. */
 @Mojo(name = "check", defaultPhase = LifecyclePhase.PACKAGE)
@@ -47,7 +48,8 @@ public class LicenseCheckerMojo extends AbstractMojo {
   protected static final String MSG_ERROR_INVALID_JSON_CONFIG =
       "If <allowedLicensesJson> is set, <allowedLicensesJsonPath> must also be set";
   protected static final String MSG_ALLOWED_LICENSES = "List of allowed licenses: ";
-  protected static final String MSG_ERROR_NOT_ALLOWED = "Not allowed license <%s> used by <%s>";
+  protected static final String MSG_ERROR_NOT_ALLOWED =
+      "Not allowed license used by: %1$s%n%5$8s- ID: %2$s%n%5$8s- URL: %3$s%n%5$8s- Name: %4$s";
   protected static final String MSG_SUCCESS = "Success: all used licenses are allowed";
   protected static final String MSG_SKIPING_DEPENDENCY = "Skipping license check for dependency: ";
 
@@ -88,7 +90,8 @@ public class LicenseCheckerMojo extends AbstractMojo {
     }
 
     // check licences
-    Map<String, String> nonCompliantDependencies = licenseChecker.checkBom(bom, allowedLicensesSet);
+    Map<String, License> nonCompliantDependencies =
+        licenseChecker.checkBom(bom, allowedLicensesSet);
 
     // check dependencies to ignore
     licenseChecker.checkIgnoredDependencies(
@@ -100,8 +103,12 @@ public class LicenseCheckerMojo extends AbstractMojo {
     if (nonCompliantDependencies.isEmpty()) {
       getLog().info(MSG_SUCCESS);
     } else {
-      for (Entry<String, String> e : nonCompliantDependencies.entrySet()) {
-        getLog().error(String.format(MSG_ERROR_NOT_ALLOWED, e.getValue(), e.getKey()));
+      for (Entry<String, License> e : nonCompliantDependencies.entrySet()) {
+        License l = e.getValue();
+        String errorMsg =
+            String.format(
+                MSG_ERROR_NOT_ALLOWED, e.getKey(), l.getId(), l.getUrl(), l.getName(), "");
+        getLog().error(errorMsg);
       }
       throw new MojoExecutionException("");
     }
