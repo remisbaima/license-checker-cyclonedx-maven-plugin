@@ -19,8 +19,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import io.github.remisbaima.cyclonedx.LicenseChecker;
-
 class LicenseCheckerTest {
   private static final URL JSON_FILE_URL =
       LicenseCheckerTest.class.getResource("/complex-project/licenses.json");
