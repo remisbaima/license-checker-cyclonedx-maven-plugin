@@ -1,18 +1,22 @@
 [
 	{
 		"License_SPDX": "Apache-2.0",
+		"License_Name": "Apache License 2.0",
 		"License_Conflicts": "No"
 	},
 	{
 		"License_SPDX": "BSD-4-Clause",
+		"License_Name": "BSD 4-Clause \"Original\" or \"Old\" License",
 		"License_Conflicts": "No"
 	},
 	{
 		"License_SPDX": "GPL-1.0-only",
+		"License_Name": "GNU General Public License v1.0 only",
 		"License_Conflicts": "Yes"
 	},
 	{
 		"License_SPDX": "GPL-2.0",
+		"License_Name": "GNU General Public License v2.0 only",
 		"License_Conflicts": "Yes"
 	}
 ]

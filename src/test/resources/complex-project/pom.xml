@@ -61,7 +61,7 @@
           </execution>
         </executions>
         <configuration>
-          <allowedLicenses>MIT</allowedLicenses>
+          <allowedLicenses>MIT,https://www.apache.org/licenses/LICENSE-1.1</allowedLicenses>
           <allowedLicensesJson>${project.basedir}/licenses.json</allowedLicensesJson>
           <allowedLicensesJsonPath>$[?(@.License_Conflicts=='No')].License_SPDX</allowedLicensesJsonPath>
           <ignoredDependencies>org.codehaus.woodstox:stax2-api:4.2.1</ignoredDependencies>

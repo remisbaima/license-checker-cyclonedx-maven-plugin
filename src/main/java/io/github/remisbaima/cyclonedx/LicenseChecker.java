@@ -4,7 +4,10 @@ import com.jayway.jsonpath.JsonPath;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -34,8 +37,8 @@ public class LicenseChecker {
 
   private static final int TIMEOUT_MILLIS = 10000; // 10sec
 
-  protected Map<String, String> checkBom(Bom bom, Set<String> allowedLicenses) {
-    Map<String, String> nonCompliantDependencies = new HashMap<>();
+  protected Map<String, License> checkBom(Bom bom, Set<String> allowedLicenses) {
+    Map<String, License> nonCompliantDependencies = new HashMap<>();
     for (Component component : bom.getComponents()) {
       String dependencyId = getDependencyId(component);
       LicenseChoice licenseChoice = component.getLicenseChoice();
@@ -46,9 +49,14 @@ public class LicenseChecker {
 
       List<License> licenses = licenseChoice.getLicenses();
       for (License license : licenses) {
-        String licenseId = license.getId();
-        if (!allowedLicenses.contains(StringUtils.lowerCase(licenseId))) {
-          nonCompliantDependencies.put(dependencyId, licenseId);
+        String id = StringUtils.lowerCase(license.getId());
+        String url = StringUtils.lowerCase(license.getUrl());
+        String name = StringUtils.lowerCase(license.getName());
+        Set<String> itemsToCheck = new HashSet<>(Arrays.asList(id, url, name));
+
+        // check if license ID, URL and name are NOT present in allowedLicenses
+        if (Collections.disjoint(allowedLicenses, itemsToCheck)) {
+          nonCompliantDependencies.put(dependencyId, license);
         }
       }
     }

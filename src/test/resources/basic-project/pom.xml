@@ -61,7 +61,7 @@
           </execution>
         </executions>
         <configuration>
-          <allowedLicenses>Apache-2.0,MIT</allowedLicenses>
+          <allowedLicenses>Apache-2.0,https://opensource.org/licenses/MIT</allowedLicenses>
           <allowedLicensesJson/>
           <allowedLicensesJsonPath/>
           <ignoredDependencies>org.codehaus.woodstox:stax2-api:4.2.1</ignoredDependencies>
