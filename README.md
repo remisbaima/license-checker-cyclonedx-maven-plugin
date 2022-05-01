@@ -42,8 +42,8 @@ Maven plugin to check if dependencies in CycloneDX BOM files use only allowed li
       </execution>
     </executions>
     <configuration>
-      <!-- values below MUST be customised for each company/team/project -->
-      <allowedLicenses>MIT</allowedLicenses>
+      <!-- VALUES BELOW MUST BE CUSTOMISED FOR EACH COMPANY/TEAM/PROJECT -->
+      <allowedLicenses>MIT,https://www.apache.org/licenses/LICENSE-1.1</allowedLicenses>
       <allowedLicensesJson>${project.basedir}/licenses.json</allowedLicensesJson>
       <allowedLicensesJsonPath>$[?(@.License_Conflicts=='No')].License_SPDX</allowedLicensesJsonPath>
       <ignoredDependencies>org.codehaus.woodstox:stax2-api:4.2.1</ignoredDependencies>
@@ -56,10 +56,10 @@ See [${project.basedir}/licenses.json](src/test/resources/complex-project/licens
 ### 2. Configure plugin options
 | Option  | Description |
 | ------- | ----------- |
-| allowedLicenses         | Comma separated list of SPDX licenses allowed to be used |
-| allowedLicensesJson     | URL or file path of a JSON content containing the list of SPDX licenses allowed to be used |
-| allowedLicensesJsonPath | JSONPath expression to extract the licenses from the JSON file containing the list of SPDX licenses allowed to be used |
-| ignoredDependencies     | Comma separated list of dependencies to ignore in the format `<groupId>:<artifactId>:<version>`. This is useful when the CycloneDX Maven Plugin cannot identify the license ID of a dependency. If any entry from this list is found in the BOM, it will be ignored and logged with `[WARNING]` since dependencies without a clear license are generally old or not well maintained and should be updated or replaced. |
+| allowedLicenses         | Comma separated list of SPDX licenses (ID, URL or name) allowed to be used |
+| allowedLicensesJson     | URL or file path of a JSON content containing the list of SPDX licenses |
+| allowedLicensesJsonPath | JSONPath expression to extract from the `allowedLicensesJson` the licenses allowed to be used |
+| ignoredDependencies     | Comma separated list of dependencies to ignore in the format `<groupId>:<artifactId>:<version>`. This is useful when the CycloneDX Maven Plugin cannot identify the license ID, URL or name of a dependency. If any entry from this list is found in the BOM, it will be ignored and logged with `[WARNING]` since dependencies without a clear license are generally old or not well maintained and should be updated or replaced. |
 
 ##### Note
 To quickly develop and test a JSONPath expression you can use e.g.: https://jsonpath.com/
