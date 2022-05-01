@@ -3,12 +3,9 @@ package io.github.remisbaima.cyclonedx;
 import java.io.File;
 import java.io.IOException;
 import java.util.ResourceBundle;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import io.github.remisbaima.cyclonedx.LicenseCheckerMojo;
 import io.takari.maven.testing.TestResources;
 import io.takari.maven.testing.executor.MavenRuntime;
 import io.takari.maven.testing.executor.MavenRuntime.MavenRuntimeBuilder;
@@ -50,6 +47,16 @@ public class LicenseCheckerMojoTest {
         .execute("clean", "package")
         .assertLogText("[ERROR] ")
         .assertLogText(LicenseCheckerMojo.MSG_ERROR_MINIMUM_CONFIG);
+  }
+
+  @Test
+  public void testError() throws IOException, Exception {
+    File baseDir = resources.getBasedir("error-project");
+    maven
+        .forProject(baseDir)
+        .execute("clean", "package")
+        .assertLogText("[ERROR] ")
+        .assertLogText("org.codehaus.woodstox:stax2-api:4.2.1");
   }
 
   private void checkHappyPath(String projectName) throws IOException, Exception {
