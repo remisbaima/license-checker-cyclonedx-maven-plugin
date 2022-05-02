@@ -62,7 +62,7 @@ See [${project.basedir}/licenses.json](src/test/resources/complex-project/licens
 | ignoredDependencies     | Comma separated list of dependencies to ignore in the format `<groupId>:<artifactId>:<version>`. This is useful when the CycloneDX Maven Plugin cannot identify the license ID, URL or name of a dependency. If any entry from this list is found in the BOM, it will be ignored and logged with `[WARNING]` since dependencies without a clear license are generally old or not well maintained and should be updated or replaced. |
 
 ##### Note
-To quickly develop and test a JSONPath expression you can use e.g.: https://jsonpath.com/
+To quickly develop and test a JSONPath expression you can use e.g.: http://jsonpath.herokuapp.com/
 
 
 ### 3. Run Maven
