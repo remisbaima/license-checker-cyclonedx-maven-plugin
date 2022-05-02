@@ -1,9 +1,11 @@
 package io.github.remisbaima.cyclonedx;
 
+import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -106,7 +108,13 @@ public class LicenseChecker {
       } else {
         file = new File(jsonFileUri);
       }
-      return JsonPath.read(file, jsonPath);
+
+      DocumentContext json = JsonPath.parse(file);
+      List<String> allowedList = new ArrayList<>();
+      for (String jsonPathItem : jsonPath.trim().split("\\s*;\\s*")) {
+        allowedList.addAll(json.read(jsonPathItem));
+      }
+      return allowedList;
     } catch (Exception e) {
       throw new IOException(e);
     }

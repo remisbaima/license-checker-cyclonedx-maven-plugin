@@ -58,7 +58,7 @@ See [${project.basedir}/licenses.json](src/test/resources/complex-project/licens
 | ------- | ----------- |
 | allowedLicenses         | Comma separated list of SPDX licenses (ID, URL or name) allowed to be used |
 | allowedLicensesJson     | URL or file path of a JSON content containing the list of SPDX licenses |
-| allowedLicensesJsonPath | JSONPath expression to extract from the `allowedLicensesJson` the licenses allowed to be used |
+| allowedLicensesJsonPath | Semicolon separated list of JSONPath expressions to extract from the `allowedLicensesJson` the licenses allowed to be used |
 | ignoredDependencies     | Comma separated list of dependencies to ignore in the format `<groupId>:<artifactId>:<version>`. This is useful when the CycloneDX Maven Plugin cannot identify the license ID, URL or name of a dependency. If any entry from this list is found in the BOM, it will be ignored and logged with `[WARNING]` since dependencies without a clear license are generally old or not well maintained and should be updated or replaced. |
 
 ##### Note

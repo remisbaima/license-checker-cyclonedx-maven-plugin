@@ -7,6 +7,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import io.takari.maven.testing.TestResources;
+import io.takari.maven.testing.executor.MavenExecutionResult;
 import io.takari.maven.testing.executor.MavenRuntime;
 import io.takari.maven.testing.executor.MavenRuntime.MavenRuntimeBuilder;
 import io.takari.maven.testing.executor.MavenVersions;
@@ -36,7 +37,7 @@ public class LicenseCheckerMojoTest {
 
   @Test
   public void testComplex() throws IOException, Exception {
-    checkHappyPath("complex-project");
+    checkHappyPath("complex-project").assertLogText("apache license 2.0");
   }
 
   @Test
@@ -59,9 +60,9 @@ public class LicenseCheckerMojoTest {
         .assertLogText("org.codehaus.woodstox:stax2-api:4.2.1");
   }
 
-  private void checkHappyPath(String projectName) throws IOException, Exception {
+  private MavenExecutionResult checkHappyPath(String projectName) throws IOException, Exception {
     File baseDir = resources.getBasedir(projectName);
-    maven
+    return maven
         .forProject(baseDir)
         .execute("clean", "package")
         .assertLogText(LicenseCheckerMojo.MSG_ALLOWED_LICENSES)
