@@ -111,8 +111,8 @@ public class LicenseChecker {
 
       DocumentContext json = JsonPath.parse(file);
       List<String> allowedList = new ArrayList<>();
-      for (String jsonPathItem : jsonPath.trim().split("\\s*;\\s*")) {
-        allowedList.addAll(json.read(jsonPathItem));
+      for (String part : StringUtils.split(jsonPath, ";")) {
+        allowedList.addAll(json.read(StringUtils.trim(part)));
       }
       return allowedList;
     } catch (Exception e) {
