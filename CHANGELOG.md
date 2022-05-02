@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.0](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.5...v0.1.0) (2022-05-01)
+
+
+### Features
+
+* allowed licenses can also contain URL and name (besides ID) ([f5e4326](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/f5e4326553feb99ff53e3cedba9e4763b45f7aed))
+* log more details of invalid licenses ([c49bcbf](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/c49bcbf92184a97cea6025ef5bead4b1e062576e))
+
+
+### Documentation
+
+* add "-DskipTests" to doc so user can build faster ([6608be7](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/6608be7cf0d80882009b89d42e7975697245cbdf))
+* doc usage of license ID, URL or name ([5415002](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/54150023d322854d2f054930a971fbf5bd0e7bd9))
+
 ### [0.0.5](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.4...v0.0.5) (2022-04-27)
 
 
