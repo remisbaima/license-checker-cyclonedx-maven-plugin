@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
   <artifactId>test-project</artifactId>
-  <version>0.1.0</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <licenses>
@@ -15,7 +17,6 @@
   </licenses>
 
   <properties>
-    <test.version>1.0.0</test.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,6 +66,15 @@
           <allowedLicensesJson>${project.basedir}/licenses.json</allowedLicensesJson>
           <allowedLicensesJsonPath>$[?(@.License_Conflicts=='No')].License_SPDX;$[?(@.License_Conflicts=='No')].License_Name</allowedLicensesJsonPath>
           <ignoredDependencies>org.codehaus.woodstox:stax2-api:4.2.1</ignoredDependencies>
+        </configuration>
+      </plugin>
+      <!-- avoid release-please to update this pom version -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.10.0</version>
+        <configuration>
+          <processProject>false</processProject>
         </configuration>
       </plugin>
     </plugins>
