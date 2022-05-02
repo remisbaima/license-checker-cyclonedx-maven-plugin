@@ -45,7 +45,11 @@ public class LicenseChecker {
       String dependencyId = getDependencyId(component);
       LicenseChoice licenseChoice = component.getLicenseChoice();
       if (licenseChoice == null || licenseChoice.getLicenses() == null) {
-        nonCompliantDependencies.put(dependencyId, null);
+        License license = new License();
+        license.setId(null);
+        license.setUrl(null);
+        license.setName(null);
+        nonCompliantDependencies.put(dependencyId, license);
         continue;
       }
 
