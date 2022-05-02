@@ -47,7 +47,7 @@
   </ciManagement>
 
   <prerequisites>
-    <maven>3.6.3</maven>
+    <maven>3.5.0</maven>
   </prerequisites>
 
   <properties>
