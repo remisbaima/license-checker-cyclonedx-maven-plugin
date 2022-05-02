@@ -73,7 +73,7 @@ mvn package -DskipTests
 
 ## Requirements
 - CycloneDX Maven Plugin v2.5.3+ to generate the BOM files: https://github.com/CycloneDX/cyclonedx-maven-plugin
-- Maven v3.6.3+: https://maven.apache.org/
+- Maven v3.5.0+: https://maven.apache.org/
 - Java SE 8+: https://www.oracle.com/java/technologies/downloads/#java8
 
 
