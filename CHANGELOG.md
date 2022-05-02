@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.2.0](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.1.0...v0.2.0) (2022-05-02)
+
+
+### Features
+
+* add support for semicolon separated list of JSONPath expressions ([3460c6a](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/3460c6a61b56f78ac98abb5e95b2930e09e28f38))
+
+
+### Bug Fixes
+
+* add test for NPE when license does not exist ([48fffe6](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/48fffe633df992f214e25229ae02c475403377fa))
+* fix NPE when license does not exist ([d21246e](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/d21246e92e73fe10d0b33e799bfc1aeeb93de697))
+* Sonarcloud finding ([fbc9b16](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/fbc9b16bf92f12b835fea831ceb6a2311491df4a))
+
+
+### Documentation
+
+* update link to check JSONPath ([fb752d1](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/fb752d1b3e9e93219764b5dc177b015371e77f85))
+
 ## [0.1.0](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.0.5...v0.1.0) (2022-05-01)
 
 
