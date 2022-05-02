@@ -57,7 +57,11 @@ public class LicenseCheckerMojoTest {
         .forProject(baseDir)
         .execute("clean", "package")
         .assertLogText("[ERROR] ")
-        .assertLogText("org.codehaus.woodstox:stax2-api:4.2.1");
+        .assertLogText("org.codehaus.woodstox:stax2-api:4.2.1")
+        .assertLogText("org.openapitools:jackson-databind-nullable:0.2.2")
+        .assertLogText("- ID: null")
+        .assertLogText("- URL: null")
+        .assertLogText("- Name: null");
   }
 
   private MavenExecutionResult checkHappyPath(String projectName) throws IOException, Exception {
