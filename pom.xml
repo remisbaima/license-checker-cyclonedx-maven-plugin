@@ -58,7 +58,7 @@
     <maven-plugin.version>3.6.4</maven-plugin.version>
     <takari-plugin.version>3.0.0</takari-plugin.version>
     <takari-lifecycle-plugin.version>2.0.8</takari-lifecycle-plugin.version>
-    <junit-jupiter.version>5.8.2</junit-jupiter.version>
+    <junit-jupiter.version>5.9.0</junit-jupiter.version>
     <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     <slf4j-nop.version>2.0.1</slf4j-nop.version>
     <checkstyle.version>10.3</checkstyle.version>
