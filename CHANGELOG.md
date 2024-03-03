@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.2.1...v0.2.2) (2024-03-03)
+
+
+### Documentation
+
+* downgrade minimum Maven version from 3.6.3 to 3.5.0 ([bf10e03](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/bf10e03994a0559d11896bee49965286836412d0))
+
 ### [0.2.1](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.2.0...v0.2.1) (2022-05-02)
 
 
