@@ -1,10 +1,10 @@
 [![Java CI with Maven](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/maven.yml)
 [![CodeQL](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/actions/workflows/codeql-analysis.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=remisbaima_license-checker-cyclonedx-maven-plugin&metric=alert_status)](https://sonarcloud.io/summary/overall?id=remisbaima_license-checker-cyclonedx-maven-plugin)
-
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.remisbaima/license-checker-cyclonedx-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.remisbaima/license-checker-cyclonedx-maven-plugin)
-[![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)][LICENSE]
 
+[![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)][LICENSE]
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8628/badge)](https://www.bestpractices.dev/projects/8628)
 
 # license-checker-cyclonedx-maven-plugin
 Maven plugin to check if dependencies in CycloneDX BOM files use only allowed licenses.
