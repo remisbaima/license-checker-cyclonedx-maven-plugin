@@ -55,7 +55,7 @@
     <cyclonedx-core-java.version>11.0.1</cyclonedx-core-java.version>
     <json-path.version>2.10.0</json-path.version>
     <jackson-databind.version>2.20.1</jackson-databind.version>
-    <maven-plugin.version>3.15.1</maven-plugin.version>
+    <maven-plugin.version>3.15.2</maven-plugin.version>
     <takari-plugin.version>3.1.1</takari-plugin.version>
     <takari-lifecycle-plugin.version>2.3.2</takari-lifecycle-plugin.version>
     <junit-jupiter.version>5.13.4</junit-jupiter.version>
