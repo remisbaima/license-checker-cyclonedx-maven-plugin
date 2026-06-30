@@ -30,8 +30,11 @@ jobs:
         path: ~/.sonar/cache
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
-    - name: Build with Maven and analyze with SonarCloud
+    - name: Build with Maven
+      run: mvn -B verify -Pcoverage
+    - name: Analyze with SonarCloud
+      if: ${{ env.SONAR_TOKEN != '' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=remisbaima -Dsonar.projectKey=remisbaima_license-checker-cyclonedx-maven-plugin -Pcoverage
+      run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=remisbaima -Dsonar.projectKey=remisbaima_license-checker-cyclonedx-maven-plugin -Pcoverage
