@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.2.2...v0.2.3) (2026-06-30)
+
+
+### Bug Fixes
+
+* update dependency to fix test case ([070cb0f](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/070cb0fed053a1eb24a6c4de1813b6bb2f80bb40))
+* upgrade CI Java version from 17 to 21 for checkstyle 13.x compatibility ([fbbdb51](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/commit/fbbdb5150ca87c1c5fb17a3849418f7eca481452))
+
 ## [0.2.2](https://github.com/remisbaima/license-checker-cyclonedx-maven-plugin/compare/v0.2.1...v0.2.2) (2024-03-03)
 
 
