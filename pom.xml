@@ -57,11 +57,11 @@
     <jackson-databind.version>2.22.0</jackson-databind.version>
     <maven-plugin.version>3.15.2</maven-plugin.version>
     <takari-plugin.version>3.1.1</takari-plugin.version>
-    <takari-lifecycle-plugin.version>2.3.2</takari-lifecycle-plugin.version>
-    <junit-jupiter.version>6.0.3</junit-jupiter.version>
-    <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
-    <slf4j-nop.version>2.0.17</slf4j-nop.version>
-    <checkstyle.version>13.2.0</checkstyle.version>
+    <takari-lifecycle-plugin.version>2.3.4</takari-lifecycle-plugin.version>
+    <junit-jupiter.version>6.1.1</junit-jupiter.version>
+    <maven-surefire-plugin.version>3.5.6</maven-surefire-plugin.version>
+    <slf4j-nop.version>2.0.18</slf4j-nop.version>
+    <checkstyle.version>13.7.0</checkstyle.version>
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
     <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
     <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
